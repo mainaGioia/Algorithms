@@ -88,6 +88,71 @@ public class Main{
     return res;
   }
 
+
+	public static void mergesort2(int[] A, int l, int r){
+    // if i do r-l, the m would be relative to that section, then m = m+l
+    if(r > l){
+      int m = (r+l)/2;
+      mergesort(A, l, m);
+      mergesort(A, m+1, r);
+      merges(A, l, m, r);
+    }
+
+  }
+
+  public static void merges(int[] A, int l, int m, int r){
+    //temp arrays
+    int s1 = m-l+1;
+    int s2 = r-m;
+    int[] left = new int[s1];
+    int[] right = new int[s2];
+    //fill them in
+    int i = 0;
+    int j = 0;
+    for (int k=l; k<=r; k++){
+      if(k <= m){
+        left[i] = A[k];
+        i++;
+      }
+      else{
+        right[j] = A[k];
+        j++;
+      }
+    }
+
+    //[l,...,m] [m+1,...,r]
+    i = 0;
+    j = 0;
+    int k = l;
+
+    while(i < s1 && j < s2){
+      if(right[j] < left[i]){
+        A[k] = right[j];
+        j++;
+        k++;
+      }
+      else{
+        A[k] = left[i];
+        i++;
+        k++;
+      }
+    }
+
+    //remaining elements
+
+    while(i<s1){
+      A[k] = left[i];
+      i++;
+      k++;
+    }
+    while(j<s2){
+      A[k] = right[j];
+      j++;
+      k++;
+    }
+
+  }
+
   public static void printArray(String s, int[] A){
     int l = A.length;
     System.out.print(s+"[");
