@@ -45,8 +45,8 @@ public class Main{
       else
         right[i-m] = A[i];
     }
-    mergesort(left);
-    mergesort(right);
+    left = mergesort(left);
+    right = mergesort(right);
     return merge(left,right);
   }
 
@@ -57,18 +57,16 @@ public class Main{
     int[] res = new int[lenRes];
     int leftP = 0;
     int rightP = 0;
-    printArray("left: ",left);
-    printArray("right: ", right);
+    //printArray("left: ",left);
+    //printArray("right: ", right);
     //fill in the result with the lowest element you see
     int i = 0;
     while(rightP < right.length && leftP < left.length){
         if(left[leftP] < right[rightP]){
-          System.out.println("aggiungoL "+left[leftP] +" in pos "+i);
           res[i] = left[leftP];
           leftP++;
         }
         else {
-          System.out.println("aggiungoR "+right[rightP]+ " in pos "+i );
           res[i] = right[rightP];
           rightP++;
         }
@@ -76,19 +74,17 @@ public class Main{
     }
     //add the remain element if the 2 halves are not the same lenght
     while(leftP < left.length){
-      System.out.println("aggiungoL elemento in pos "+leftP+" che sarebbe "+left[leftP]);
       res[i] = left[leftP];
       i++;
       leftP++;
     }
 
     while(rightP < right.length){
-      System.out.println("aggiungoR elemento in pos "+rightP+" che sarebbe "+right[rightP]);
       res[i] = right[rightP];
       rightP++;
       i++;
     }
-    printArray("res: ", res);
+    //printArray("res: ", res);
     return res;
   }
 
