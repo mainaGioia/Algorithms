@@ -6,7 +6,7 @@ class Node:
         self.left = None
         self.right = None
 
-
+#O(n)
 def findLCA(root, val1, val2):
     path1 = []
     path2 = []
@@ -41,3 +41,20 @@ def findPath(root, val, path):
 
 
 #LCA in BST
+root = Node(20)
+root.left = Node(8)
+root.right = Node(22)
+root.left.left = Node(4)
+root.left.right = Node(12)
+root.left.right.left = Node(10)
+root.left.right.right = Node(14)
+
+#O(h)
+def findLCA(root, n1, n2):
+     if (root is None):
+             return False
+     if n1 < root.val:
+             return findLCA(root.left, n1, n2)
+     if n1 > root.val:
+             return findLCA(root.right, n1, n2)
+     return root.val
