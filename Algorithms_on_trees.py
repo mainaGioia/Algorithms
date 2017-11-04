@@ -1,4 +1,4 @@
-//LCA least common ancestor between 2 nodes in Binary Tree
+#LCA least common ancestor between 2 nodes in Binary Tree
 
 class Node:
     def __init__(self, val):
@@ -28,7 +28,7 @@ def findPath(root, val, path):
         return False
     path.append(root.val)
     print("added "+str(root.val)+" to the path to node "+str(val))
-    //put here otherwise for 2 nodes that are parent and child, the node itself will not be in the path
+    #put here otherwise for 2 nodes that are parent and child, the node itself will not be in the path
     if root.val == val:
         return True
     if findPath(root.left, val, path) or findPath(root.right, val, path):
@@ -37,3 +37,7 @@ def findPath(root, val, path):
     print(str(root.val)+" does not belong to the path to "+str(val))
     path.pop()
     return False
+
+
+
+#LCA in BST
