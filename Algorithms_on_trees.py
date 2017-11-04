@@ -49,7 +49,7 @@ root.left.right = Node(12)
 root.left.right.left = Node(10)
 root.left.right.right = Node(14)
 
-#O(h)
+#O(h) time and extra space for recursive calls
 def findLCA(root, n1, n2):
      if (root is None):
              return False
@@ -57,4 +57,18 @@ def findLCA(root, n1, n2):
              return findLCA(root.left, n1, n2)
      if n1 > root.val:
              return findLCA(root.right, n1, n2)
+     return root.val
+
+
+
+#iterative
+#O(h) time and O(h) space
+def findLCA(root, n1, n2):
+     while(root != None):
+             if n1<root.val and n2< root.val:
+                     root = root.left
+             if n1 > root.val and n2 > root.val:
+                     root = root.right
+             else:
+                     break
      return root.val
